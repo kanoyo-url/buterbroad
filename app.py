@@ -89,4 +89,4 @@ with gr.Blocks() as demo:
 if args.ngrok is not None:
     connect(args.ngrok, args.server_port, {'region': args.ngrok_region, 'authtoken_from_env': False})
     
-demo.queue().launch(show_error=True,server_name=args.server_name,server_port=args.server_port)
+demo.queue().launch(show_error=True,share=False,server_name=args.server_name,server_port=args.server_port)
