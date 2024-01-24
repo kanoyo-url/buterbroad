@@ -7,7 +7,6 @@ import ngrok
 parser = argparse.ArgumentParser(description='Refacer')
 parser.add_argument("--max_num_faces", type=int, help="Max number of faces on UI", default=5)
 parser.add_argument("--force_cpu", help="Force CPU mode", default=False, action="store_true")
-parser.add_argument("--share_gradio", help="Share Gradio", default=False, action="store_true")
 parser.add_argument("--server_name", type=str, help="Server IP address", default="127.0.0.1")
 parser.add_argument("--server_port", type=int, help="Server port", default=7860)
 parser.add_argument("--colab_performance", help="Use in colab for better performance", default=False,action="store_true")
@@ -90,5 +89,4 @@ with gr.Blocks() as demo:
 if args.ngrok is not None:
     connect(args.ngrok, args.server_port, {'region': args.ngrok_region, 'authtoken_from_env': False})
     
-#demo.launch(share=True,server_name="0.0.0.0", show_error=True)
-demo.queue().launch(show_error=True,share=args.share_gradio,server_name=args.server_name,server_port=args.server_port)
+demo.queue().launch(show_error=True,server_name=args.server_name,server_port=args.server_port)
